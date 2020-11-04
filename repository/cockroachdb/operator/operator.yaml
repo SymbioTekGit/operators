@@ -1,0 +1,25 @@
+apiVersion: kudo.dev/v1beta1
+appVersion: 20.1.8
+kubernetesVersion: 0.16.0
+kudoVersion: 0.17.1
+maintainers:
+- email: symbiotek2012@gmail.com
+  name: SymbioTekGit
+name: cockroachdb
+operatorVersion: 0.1.0
+plans:
+  deploy:
+    phases:
+    - name: deploy
+      steps:
+      - name: sts
+        tasks:
+        - sts
+      strategy: serial
+    strategy: serial
+tasks:
+- kind: Apply
+  name: sts
+  spec:
+    resources:
+      - statefulset.yaml
